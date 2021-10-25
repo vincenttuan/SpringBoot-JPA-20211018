@@ -1,17 +1,11 @@
 package com.example.demo.test.twoway_1tom;
 
-import javax.persistence.CascadeType;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.example.demo.entity.oneway_mto1.Customer;
-import com.example.demo.entity.oneway_mto1.Order;
-import com.example.demo.repository.CustomerRepository;
 import com.example.demo.repository.MenuGroupRepository;
 import com.example.demo.repository.MenuItemRepository;
-import com.example.demo.repository.OrderRepository;
 import com.example.demo.twoway_1tom.MenuGroup;
 import com.example.demo.twoway_1tom.MenuItem;
 

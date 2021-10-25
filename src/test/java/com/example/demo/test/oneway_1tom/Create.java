@@ -1,8 +1,5 @@
 package com.example.demo.test.oneway_1tom;
 
-import javax.persistence.CascadeType;
-import javax.persistence.OneToMany;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
