@@ -1,5 +1,6 @@
 package com.example.demo.entity.oneway_mto1;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,7 +24,8 @@ public class Order {
 	
 	// 單向多對一
 	//@ManyToOne
-	@ManyToOne(fetch = FetchType.LAZY)
+	//@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	// customer_id 指的就是外鍵（預設是有約束性）
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
