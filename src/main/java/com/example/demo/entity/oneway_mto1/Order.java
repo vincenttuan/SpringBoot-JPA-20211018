@@ -2,6 +2,7 @@ package com.example.demo.entity.oneway_mto1;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,7 +22,8 @@ public class Order {
 	private String name;
 	
 	// 單向多對一
-	@ManyToOne
+	//@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	// customer_id 指的就是外鍵（預設是有約束性）
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
