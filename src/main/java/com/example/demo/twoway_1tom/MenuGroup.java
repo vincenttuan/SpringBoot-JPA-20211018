@@ -1,4 +1,4 @@
-package com.example.demo.oneway_1tom;
+package com.example.demo.twoway_1tom;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -13,10 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-// 傳染
 @Entity
-@Table(name = "infects")
-public class Infect {
+@Table(name = "menu_groups")
+public class MenuGroup {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -24,11 +23,12 @@ public class Infect {
 	@Column(length = 50, nullable = true)
 	private String name;
 	
-	// 單向ㄧ對多
-	//@OneToMany
-	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-	@JoinColumn(name = "infect_id") // 此欄位會配置在「多」的ㄧ方
-	private Set<Vaccine> vaccines = new LinkedHashSet<>();
+	// 雙向一對多
+	// @JoinColumn(name = "group_id") 移除此行
+	// 使用 mappedBy 來放棄關聯維護，也不再使用 @JoinColumn
+	// @OneToMany(mappedBy = "menuGroup")
+	@OneToMany(mappedBy = "menuGroup", cascade = CascadeType.PERSIST)
+	private Set<MenuItem> items = new LinkedHashSet<>();
 
 	public Long getId() {
 		return id;
@@ -46,14 +46,13 @@ public class Infect {
 		this.name = name;
 	}
 
-	public Set<Vaccine> getVaccines() {
-		return vaccines;
+	public Set<MenuItem> getItems() {
+		return items;
 	}
 
-	public void setVaccines(Set<Vaccine> vaccines) {
-		this.vaccines = vaccines;
+	public void setItems(Set<MenuItem> items) {
+		this.items = items;
 	}
-	
 	
 	
 }
