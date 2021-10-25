@@ -3,6 +3,7 @@ package com.example.demo.oneway_1tom;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,8 +25,9 @@ public class Infect {
 	private String name;
 	
 	// 單向ㄧ對多
-	@OneToMany
-	@JoinColumn(name = "infect_id")
+	//@OneToMany
+	@OneToMany(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "infect_id") // 此欄位會配置在「多」的ㄧ方
 	private Set<Vaccine> vaccines = new LinkedHashSet<>();
 
 	public Long getId() {
